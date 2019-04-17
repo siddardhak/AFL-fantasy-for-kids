@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pizza Form</title>
+    <meta name="author" content="siddardha">
+    <meta name="description" content="Pizza order form">
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h1>Place Pizza Order</h1>
+    <p> you can ring us on 9899 9999 or pickup at Toorak road South Yarra or Place order online what could be easier?</p>
+    <form name="pizza" method="GET">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td><input type="number" maxlength="10" placeholder="A number we can ring"></td>
+            </tr>
+            <tr>
+                <td><strong>Size?</strong></td>
+            </tr>
+            <tr>
+                <td>Family</td>
+                <td><input type="radio" name="size" id="size"></td>
+            </tr>
+            <tr>
+                <td>Large</td>
+                <td><input type="radio" name="size" id="size"></td>
+            </tr>
+            <tr>
+                <td>Small</td>
+                <td><input type="radio" name="size" id="size"></td>
+            </tr>
+            <tr>
+                <td>How Many?</td>
+                <td><input type="number" size="4" name="how_many"></td>
+            </tr>
+            <tr>
+                <td>Type?</td>
+                <td><select name="type" size="4" multiple="multiple">
+                        <option value="SS"> Smoked Salmon </option>
+                        <option value="P"> Pesto </option>
+                        <option value="T"> Tropical </option>
+                        <option value="M"> Mexican </option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>PickUp?</td>
+                <td><input type="radio" name="option" id="size"></td>
+            </tr>
+            <tr>
+                <td>Deliver?</td>
+                <td><input type="radio" name="option" id="size" checked="true"></td>
+            </tr>
+            <tr>
+                <td><strong>Delivery Info</strong></td>
+            </tr>
+            <tr>
+                <td>Delivery Time</td>
+                <td><select name="time">
+                        <option value="6"> 6:30</option>
+                        <option value="630"> 7:00 </option>
+                        <option value="7"> 7:30 </option>
+                        <option value="8"> 8:00 </option>
+                        <option value="830"> 8:30 </option>
+                        <option value="9"> 9:00 </option>
+                        <option value="930"> 9:30 </option>
+                        <option value="10"> 10:30 </option>
+                        <option value="11"> 11:00 </option>
+                </td>
+            </tr>
+            <tr>
+                <td>Please allow 30min for delivery</td>
+            </tr>
+            <tr>
+                <td><textarea name="comment" id="comment" cols="40" rows="4"> Please tell us address or any other requests
+                    </textarea></td>
+            </tr>
+            <tr>
+                <td>Do you want to receive special offer in this mail?</td>
+                <td><input type="checkbox" checked="true"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="submit order"></td>
+                <td><input type="reset" value="clear"></td>
+            </tr>
+
+
+
+        </table>
+    </form>
+    <h1>Your Comments on Our Business</h1>
+    <p>Required field are marked with an asterisk *</p>
+    <form>
+    <p>*Name: <input type="text" name="name" placeholder="your first and last name" required></p>
+    <p>*Email: <input type="email" name="email" placeholder="your@yourdomain.com" required></p>
+    <p>*Rating(1-10): <input type="range"name="rating" min="1" max="10" required></p>
+    <p>*Comments: <textarea name="comment" id="comment" cols="15" rows="4" required> Please tell us address or any other requests
+                        </textarea></p>
+    <p><input type="checkbox" required>Agree the conditions</p>
+    <p><input type="submit" value="submit">  <input type="reset" value="clear"> </p>
+    </form>
+</body>

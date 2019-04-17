@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Survey</title>
+    <meta name="author" content="siddardha">
+    <meta name="description" content="Pizza order form">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+        h1 {
+            text-align: center;
+            color: blue;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+
+        p {
+            color: black;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <h1>Survey</h1>
+            <div class="form-group">
+                <label for="date">Date of Birth:</label>
+                <input type="date" id="date" name="date">
+            </div>
+            <div class="form-group">
+                <label for="postcode">Postal Code:</label>
+                <input type="text" class="form-control" id="post" name="post">
+            </div>
+            <p>Gender</p>
+            <label class="radio-inline">
+                <input type="radio" name="gender">Male
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender">Female
+            </label>
+
+            <div class="form-group">
+                <label for="year">When did you start primary school</label>
+                <select class="form-control" id="yearselect">
+                    <option>1996</option>
+                    <option>1997</option>
+                    <option>1998</option>
+                    <option>1999</option>
+                    <option>2000</option>
+                    <option>2001</option>
+                    <option>2002</option>
+                    <option>2003</option>
+                    <option>2004</option>
+                    <option>2005</option>
+                    <option>2006</option>
+                    <option>2007</option>
+                    <option>2008</option>
+                    <option>2009</option>
+                    <option>2010</option>
+                </select>
+            </div>
+            <p>When did you complete 12?</p>
+            <input type="radio" name="completed12">After 2010
+            </label>
+            <input type="radio" name="completed12">Before 2010
+            </label>
+
+            <input type="radio" name="completed12">Never
+            <p>Are you currently employed full time? (20 hours or more per week)</p>
+            </label>
+            <input type="radio" name="fulltime">Yes
+            </label>
+            <input type="radio" name="fulltime">No
+            </label>
+            <p>Are you currently employed part time? (Less than 20 hours per week)</p>
+            </label>
+            <input type="radio" name="parttime">Yes
+            </label>
+            <input type="radio" name="parttime">No
+            </label>
+            <p>Who's idea is that to come to Deakin?</p>
+            <div class="checkbox">
+                <label><input type="checkbox" value="">My own</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="">One of my parents</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="">A teacher</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="">A friend</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="">A relative</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="">A friend of my parents</label>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-0 col-sm-4">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
