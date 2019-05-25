@@ -3,27 +3,139 @@ var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
+var Handlebars=require('handlebars');
+
+var team;
+
+
+router.get('/', function (req, res) {
+    res.render('index', {
+        Title: 'Welcome',
+        styles: 'index.css'
+    });
+});  
+
 
 // Register
 
 router.get('/register', function (req, res) {
-    res.render('register');
+    res.render('register',{
+        Title: 'Register',
+    });
 });
+
+//videos
+
+router.get('/videos',function(req,res){
+    res.render('videos',{
+        Title: 'Videos', 
+    });
+});
+
+
+
 
 
 //Login
 
 router.get('/login', function (req, res) {
-    res.render('login');
+    res.render('login',{
+        Title: 'Login',
+        styles:'login.css',
+    });
+});
+
+router.get('/users/login', function (req, res) {
+    res.redirect('/login');
+
 });
 
 //profile
 
 router.get('/profile',function(req,res){
-    res.render('profile');
+    res.render('profile',{
+        Title: 'Profile',
+        styles: 'profile.css',
+    });
 });
 
+router.get('/users/profile', function (req, res) {
+    res.redirect('/profile');
+});
+
+//upcoming matches
+
+router.get('/upcomingmatches',function(req,res){
+    res.render('upcomingmatches',{
+        Title:'Matches',
+        styles: 'upcomingmatches.css',
+        
+    });
+});
+
+router.get('/users/upcomingmatches',function(req,res){
+    res.redirect('/upcomingmatches');
+});
+
+//leaderboard
+
+router.get('/leaderboard',function(req,res) {
+    res.render('leaderboard',{
+        Title:'Leaderboard',
+        styles:'leaderboard.css'
+    }); 
+});
+
+router.get('/users/leaderboard', function (req, res) {
+    res.redirect('/leaderboard');
+});
+
+
+//choose team
+
+router.get('/users/chooseteam',function(req,res){
+    res.redirect('/chooseteam');
+});
+
+router.get('/chooseteam',function(req,res){
+    res.render('chooseteam',{
+        Title: 'Fantasy Team',
+        script: 'script.js',
+        styles: 'chooseteam.css',
+    });
+});
+
+router.get('/selectedteam',function(req,res){
+    if (team == "Richmond") {
+        team = "https://s3-ap-southeast-2.amazonaws.com/prtcbucket/richmond.png";
+    }
+    if (team =="Port Adelide"){
+        team="https://s3-ap-southeast-2.amazonaws.com/prtcbucket/AdelidePort.png";
+
+    }
+    res.render('selectedteam',{
+        Title: 'My Team',
+        styles: 'selectedteam.css',
+        Favteam: team,
+    });
+    
+    
+})
+
+router.get('/users/selectedteam',function(req,res){
+    res.redirect('/selectedteam');
+    
+});
+
+
+
 //Register User
+
+router.post('/chooseteam',function(req,res){
+        var image1;
+        
+});
+
 
 router.post('/register', function(req,res){
     var email=req.body.email;
@@ -33,6 +145,7 @@ router.post('/register', function(req,res){
     var teamname = req.body.tname;
     var bday = req.body.bday;
     var favteam = req.body.favteam;
+    team=favteam;
 
     
     //validation
