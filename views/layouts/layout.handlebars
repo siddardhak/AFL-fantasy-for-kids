@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <title>{{Title}}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <link rel="stylesheet" href="css/{{styles}}">
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css" />
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+        <script type="text/javascript" src="js/{{script}}"></script>
+
+    </head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                {{#if user}}
+                <a class="navbar-brand" href="/users/profile">KFL
+                </a>
+                {{else}}
+                <a class="navbar-brand" href="/">KFL</a>
+                {{/if}}
+            </div>
+            <ul class="nav navbar-nav">
+            {{#if user}}
+                <li><a href="/users/profile">Profile</a></li>
+                <li><a href="/users/leaderboard">Leaderboard</a></li>
+                <li><a href="/users/upcomingmatches">Upcoming matches</a></li>
+                <li><a href="/users/chooseteam">Choose Team</a></li>
+                <li><a href="/users/videos">Videos</a></li>
+            {{else}}
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="#KFL">What is KFL?</a></li>
+            {{/if}}
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+             {{#if user}}
+                <li><a href="/users/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                {{else}}
+                <li><a href="/users/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                {{/if}}
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        {{#if success_msg}}
+        <div class="alert alert-success">{{success_msg}}</div>
+        {{/if}}
+        
+        {{#if error_msg}}
+        <div class="alert alert-danger">{{error_msg}}</div>
+        {{/if}}
+        
+        {{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+        {{/if}}
+        {{{body}}}
+    </div>
+
+
+
+    <!---
+
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body mx-3">
+                    <form class="/login_user" method="post" action="/users/login" id="loginForm">
+
+
+                        <div class="md-form mb-5">
+                            <div id="errorMessage" style="color:red; display:none">
+
+                            </div>
+
+                            <input type="email" id="defaultForm-email" name="email" class="form-control validate"
+                                placeholder="Your Email">
+
+                        </div>
+
+                        <div class="md-form mb-4">
+                            <input type="password" id="defaultForm-pass" name="password" class="form-control validate"
+                                placeholder="Your Password">
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-default">Login</button>
+                            <button class="btn btn-default" data-dismiss="modal" data-toggle="modal"
+                                data-target="modalRegistrationForm">Register
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="modalRegistrationForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body mx-3">
+                    <form class="/login_user" method="post" action="/users/register" id="signupform">
+
+
+                        <div class="md-form mb-5">
+                            {{#if errors}}
+                            {{#each errors}}
+                            <div class="alert alert-danger">{{msg}}</div>
+                            {{/each}}
+                            {{/if}}
+
+                            </div>
+
+                            <input type="email" id="defaultForm-email" class="form-control validate" name="email"
+                                placeholder="Your Email" required="true">
+
+                        </div>
+
+                        <div class="md-form mb-4">
+                            <input type="password" id="defaultForm-pass" class="form-control validate" name="password"
+                                placeholder="Your Password" required="true">
+
+                        </div>
+                        <div class="md-form mb-4">
+                            <input type="password" id="defaultForm-pass" class="form-control validate" name="cpass"
+                                placeholder="Confirm Password" required="true">
+
+                        </div>
+
+                        <div class="md-form mb-4">
+                            <input type="text" class="form-control validate" name="uname" placeholder="Username" required="true">
+
+                        </div>
+
+                        <div class="md-form mb-4">
+                            <input type="text" class="form-control validate" name="tname" placeholder="Team name" required="true">
+
+                        </div>
+
+                        <div class="md-form mb-4">
+                            <input type="date" id="datepicker" class="form-control validate" name="bday" required="true"
+                                placeholder="Birthday">
+
+                        </div>
+
+                        <div class="dropdown">
+                            <label for="favteam">Fav Team</label>
+                            <select class="btn btn-secondary dropdown-toggle" name="favteam" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            </select>
+
+
+                        </div>
+                        <br>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-default" data-dismiss="modal" data-toggle="modal"
+                                data-target="#modalLoginForm">Login
+                            </button>
+                            <button class="btn btn-default">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+--->
+
+
+</body>
+
+
+
+
+
+
+</html>

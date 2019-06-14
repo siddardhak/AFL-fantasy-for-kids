@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <title>
+        Videos
+    </title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script>
+        function myfunction() {
+            var input = document.getElementById("serach").value;
+            input = input.toLowercase();
+            alert(input);
+            var video1 = document.getElementById("video1");
+            var video2 = document.getElementById("video2");
+            var video3 = document.getElementById("video3");
+            var video4 = document.getElementById("video4");
+            var video5 = document.getElementById("video5");
+            var video6 = document.getElementById("video6");
+            if (input == "luke parker") {
+                video1.style.display = "";
+                video2.style.display = "none";
+                video3.style.display = "none";
+                video4.style.display = "none";
+                video5.style.display = "none";
+                video6.style.display = "none";
+            }
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div style="padding-top:7%;width: 80%;padding-left: 20%">
+        <nav style>
+            <div class="nav-wrapper">
+                <form>
+                    <div class="input-field">
+                        <input id="search" type="search" onkeyup="myfunction()">
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col s12 m4" id="video1">
+            <video width="350" height="300" controls>
+                <source src="https://s3-ap-southeast-2.amazonaws.com/prtcbucket/AFL1.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="col s12 m4" id="video2">
+            <video width="350" height="300" controls>
+                <source src="https://s3-ap-southeast-2.amazonaws.com/prtcbucket/SamPowell.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="col s12 m4" id="video3">
+            <video width="350" height="300" controls>
+                <source src="https://s3-ap-southeast-2.amazonaws.com/prtcbucket/LukeParker.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4" id="video4">
+            <video width="350" height="310" controls>
+                <source src="https://s3-ap-southeast-2.amazonaws.com/prtcbucket/tom.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="col s12 m4" id="video5">
+            <video width="350" height="300" controls
+                poster="https://s3-ap-southeast-2.amazonaws.com/prtcbucket/AFL.jpg">
+                <source src="https://s3-ap-southeast-2.amazonaws.com/prtcbucket/SamPowell.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="col s12 m4" id="video6">
+            <video width="350" height="300" controls
+                poster="https://s3-ap-southeast-2.amazonaws.com/prtcbucket/Afl1.jpg">
+                <source src="https://s3-ap-southeast-2.amazonaws.com/prtcbucket/LukeParker.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

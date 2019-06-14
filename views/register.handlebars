@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="caption5">
+    {{#if errors}}
+    {{#each errors}}
+    <div class="alert alert-danger">{{msg}}</div>
+    {{/each}}
+    {{/if}}
+            <form method="post" action="/users/register">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control" id="cpass" name="cpass" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="UserName" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="uname" id="uname" placeholder="Name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Team Name" class="col-sm-2 col-form-label">Team Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="tname" name="tname" placeholder="Team Name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Date" class="col-sm-2 col-form-label">Date of Birth</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" id="bday" name="bday">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="dropdown">
+                        <label for="favteam" class="col-sm-2 col-form-label">Fav Team</label>
+                        <div class="col-sm-6">
+                        <select class="form-control" id="favteam" name="favteam">
+                            <option>Richmond</option>
+                            <option>Hawthorn</option>
+                            <option>Carlton</option>
+                            <option>Collingwood</option>
+                            <option>Essendon</option>
+                            <option>Sydney</option>
+                            <option>Adelide</option>     
+                            <option>Geelong</option>
+                            <option>West Coast Eagles</option>
+                            <option>St. Kilda</option>
+                            <option>Brisbane</option>
+                            <option>Melbourne</option>
+                            <option>North Melbourne</option>
+                            <option>Gold Coast</option>
+                            <option>SYdney Gaints</option>
+                            <option>Port Adelide</option>
+                            <option>Fremantle</option>
+                        </select>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <br>    
+                    <div class="form-group" >
+                    <div class="col-sm-10" style="margin-top:10px">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+</body>
+
+</html>
