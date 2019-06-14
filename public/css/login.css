@@ -1,0 +1,16 @@
+.parallax3 {
+                background-image: url("../images/image3.jpg");
+                min-height: 500px;
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .caption4 {
+                padding-left: 40%;
+                color:slateblue;
+                font-size: 20px;
+                padding-top: 10%;
+
+            }
