@@ -1,27 +1,83 @@
-# AFL-fantasy-for-kids
-This project is to encourage young children to engage with Australian Rules Football. According to the 2017 AFL annual report school football has seen a rise in participation by 16.21%. This shows that there is a further scope to engage more school aged kids into the sport. We believe that the kids will be actively engaged in AFL if we introduce an aspect of gamification. So, we have introduced the concept of Kids Footy League (KFL) which is the kids’ version of AFL fantasy league targeted at children between the ages of 5-15 years old. This would be a simplified and more user friendly version of https://fantasy.afl.com.au/ with less complication in terms of scoring and choosing your team, and a higher focus on developing affinity to a child’s favourite players, and introducing them to supporting a club of their choice. The idea is to build a web-based platform that lets users register (under parents’ guidance) to form an AFL Fantasy Kids profile. Using this profile each user can select 5 players for their fantasy team each week from a list of players. Once the matches are done, users can see how their active players performed and get a score based on that. The leader board mechanism is also incorporated so that kids can compete for the top spot. AFL Platform Context: Currently the fantasy AFL league does exist for adults in the aforementioned https://fantasy.afl.com.au/ where they choose their favourite players and stats provided by Champion data during a match, tally up to a score in a head to head style competition. This proposal is a similar but simplified version for kids where they use points to buy five players each week. The kids can earn more points if the players in their virtual team perform well in the last match. Value Proposition: This proposal has value in terms of audience engagement especially 5-15-year-old children. This may improve broadcasting viewership and ticket sales for matches. The player value may also increase due to his/her fan following or demand in the fantasy league.
+<h1 align="center">Auth Service</h1>
+
+<p align="center">Auth service using ECS, Cognito and Aurora Postgres</p>
 
 
-How to run this application
+# Contents
 
-Clone or download the application.
+- [Setup](#setup)
+  - [Requirements](#requirements)
+  - [Running Locally](#run-locally)
+  - [Running unit tests](#run-unit-tests)
+  - [Running integration tests](#run-integration-tests)
+  - [Other yarn commands](#yarn-commands)
 
-Make sure you have nodejs in the system.
 
-Install the required packages.
+## Setup
+### Requirements
 
-1. mongodb
-2. mongoose
-3. passport
-4. connect-flash
-5. express-session
-6. express-handlebars
-7. express-validator
-8. passport-local
+1. <b> Node 20</b> This can be installed [here](https://nodejs.org/en/download/current)
 
-Then run node app.js 
+2. <b>Yarn</b> yarn package manager can be installed from [here](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable)
 
-web application will run on localhost:3000.
+3. <b>Docker</b> docker installation [guide](https://www.docker.com/products/docker-desktop/)
 
-This application
-http://68.183.28.26 
+4. <b>AWS Vault</b> follow this [guide](https://www.docker.com/products/docker-desktop/) to install aws vault
+
+5. <b>CDK cli </b> cdk cli installed from [here](https://docs.aws.amazon.com/cdk/v2/guide/cli.html)
+
+### Running Locally
+
+After installing the aws-vault configure the profile with lyka sso through this [article](https://rhuaridh.co.uk/blog/using-aws-vault-with-sso.html) (please setup the profile for dev as foundations-dev etc.), and install all the packages using `yarn install`, add a file `.env` and copy the values from the `.env.example`, finally to run the project locally use below command.
+
+```
+aws-vault exec <profile-name> -- yarn start:local
+```
+
+this would spin up a server locally at port 3001, swagger specs can be accessed on `localhost:3001//api/cognito/v1/docs`
+
+### Running unit tests
+
+Unit tests can be found under `/src/__tests__/unit/`
+
+To run the tests use below command
+
+```
+yarn test:unit
+```
+
+### Running integration tests
+
+Unit tests can be found under `/src/__tests__/integration/`
+
+Integration tests needs seed and migrations as a dependency. To run the integration test follow below steps.
+
+1. Run the shell script under <b>seeds/development/create-cognito-users.sh</b>. This will generate create user in cognito userpools and generate a user.csv file
+
+2. Start the aurora postgres docker comtainer locally using below command
+
+```
+ docker-compose -f docker-compose.ci.yml up -d db
+```
+3. Now run the migrations using below command
+
+```
+yarn migrations --env <env-name>
+```
+
+4. On Successful migration, run the seed script using
+
+```
+yarn seed:dev --env <env-name>
+```
+
+5. Run the integration tests through this command
+
+```
+aws-vault exec <profile> -- yarn test:integration
+```
+
+### Yarn Commands
+- `yarn build` will compile the repository
+- `yarn lint:fix` will lint the `src` directory, fixing all fixable errors.
+- `yarn lint:commits` will run commitlint against all commits in your branch that aren't already in main
